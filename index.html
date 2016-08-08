@@ -20,12 +20,167 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+		<style>
+			.demo-link {
+				display: inline-block;
+				transition: transform 4s !important;
+			}
+
+			.demo-link:hover {
+				transform: rotate(360deg) !important;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h1>CSS Animations</h1>
+					<p>Jake LaCombe</p>
+					<small>HealthIntent Solutions</small>
+				</section>
+				<section>
+					<h1>A Brief History</h1>
+					<p>CSS Animations can point all the way back to the hover pseudo class from 2000</p>
+					<br/>
+					<p>In 2007, the W3C say that JavaScript did too much, and that CSS Deserves Love</p>
+					<br/>
+					<p>It eventually became a part of CSS3.</p>
+					<small>
+						And that leaves us with <a href="http://zurb.com/playground/radioactive-buttons">this</a>.
+					</small>
+				</section>
+				<section>
+					<h1>Let's start with simplicity</h1>
+				</section>
+				<section>
+					<section>
+						<h1>Transitions</h1>
+						<p>A transition is an animation that exaggerates a style change to an element.</p>
+					</section>
+					<section>
+						<h1>It's something like <a class="demo-link">this</a>.</h1>
+					</section>
+					<section>
+						<h1>And all you need is this!</h1>
+						<pre>
+						<code>
+	.demo-link {
+          display: inline-block;
+          transition: transform 4s !important;
+	}
+
+	.demo-link:hover {
+          transform: rotate(360deg) !important;
+	}
+						</code>
+						</pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Let's dive Deeper into this</h1>
+						<p><img src="https://cdn.meme.am/instances/500x/46065223.jpg"/></p>
+					</section>
+					<section>
+						<p>Transition: (property) (duration) (timing_function) (delay)</p>
+						<dl>
+							<dt>Property:</dt>
+							<dd>What property you aim to transition</dd>
+							<dt>Duration:</dt>
+							<dd>How long should the transition last</dd>
+							<dt>Timing Function:</dt>
+							<dd>How should the animation be eased (ease, linear, ease-in, ease-out)</dd>
+							<dt>Delay:</dt>
+							<dd>What should the animation delay look like.</dd>
+						</dl>
+					</section>
+					<section>
+						<h1>Want to have fun in your app?</h1>
+						<pre>
+							<code>
+  * {
+    transition: all 2s;
+  }
+							</code>
+						</pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Why do this instead of JavaScript?</h1>
+						<p>Transition effects are concerned more with styling than application logic.</p>
+						<p>Thus, this should be placed inside your stylesheets, and not in your JavaScript file.</p>
+						<p>So much easier to write as well!</p>
+					</section>
+					<section>
+						<pre>
+							<code>
+		$(document).on('mouseover', '.transitied-link', function(element) {
+		    $(element).fadeTo(0, 2);
+		})
+
+		$(document).on('mouseout', '.transitied-link', function(element) {
+			  $(element).fadeTo(1, 2);
+		});
+							</code>
+							<code>
+		.transitied-link {
+		  opacity: 1
+		  transition: opacity 2s;
+		}
+
+		.transitied-link:hover {
+		  opacity: 0;
+		}
+							</code>
+						</pre>
+						<p>Note how this lets us keep your styles inside the CSS file.</p>
+					</section>
+					<section>
+						<h1>Limitations</h1>
+						<p>Transitions can not do anything on page load. You need to go somewhere else, or use a little javascript to use CSS transitions on page load.</p>
+						<br/>
+						<p>You have no logic control over the transition. It's an all or nothing when it comes to using them. (You can't stop in between for example).</p>
+						<br/>
+						<p>If you need a large animation with lots of behavior, transitions will not be able to assist you here. (Anything that uses more than one style change)</p>
+					</section>
+				</section>
+				<section>
+					<section>CSS3 Animation</section>
+					<section>
+						<h1>CSS3 Animation</h1>
+						<p>A CSS3 Animation is what it sounds like - You use CSS to animate an element on the page</p>
+						<p>No JavaScript needed - Pure CSS</p>
+					</section>
+					<section>
+						<pre>
+							<code>
+								animation: name duration timing-function delay iteration-count direction fill-mode play-state;
+							</code>
+						</pre>
+						<dl>
+							<dt>Name:</dt>
+							<dd>Name of the animation</dd>
+							<dt>Duration:</dt>
+							<dd>How long the animation lasts for</dd>
+							<dt>Timing Function:</dt>
+							<dd>How you want the animation to progress</dd>
+							<dt>Delay:</dt>
+							<dd>When to start the animation</dd>
+							<dt>Iteration Count:</dt>
+							<dd>How many times you want the animation to occur.</dd>
+							<dt>Direction:</dt>
+							<dd>Whether to reverse the animation when an animation is complete</dd>
+							<dt>Fill Mode:</dt>
+							<dd>What values the element will take when the animation is complete</dd>
+						</dl>
+					</section>
+					<section>
+						<h1>The Name Property</h1>
+						<p>The name property is a animation definition that consists of a listing of different keyframes</p>
+					</section>
+				</section>
 			</div>
 		</div>
 
