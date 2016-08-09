@@ -29,6 +29,38 @@
 			.demo-link:hover {
 				transform: rotate(360deg) !important;
 			}
+
+			.animate-paragraph {
+				background-color: #222222;
+				color: #fff;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				animation: movearound 5s infinite;
+		  }
+
+		  @keyframes movearound {
+		  	10% {
+		  		left: 100px;
+		  	}
+
+		  	30% {
+		  		left: 400px;
+		    }
+
+		    50% {
+		    	opacity: 0;
+		  	}
+
+		  	70% {
+		  		top: 400px;
+		    }
+
+		    100% {
+		    	top: 25px;
+		    	left: 25px;
+		  	}
+		  }
 		</style>
 	</head>
 	<body>
@@ -114,15 +146,16 @@
 						<p>So much easier to write as well!</p>
 					</section>
 					<section>
+						<p>Note how this lets us keep your styles inside the CSS file.</p>
 						<pre>
 							<code>
-		$(document).on('mouseover', '.transitied-link', function(element) {
-		    $(element).fadeTo(0, 2);
-		})
+$(document).on('mouseover', '.transitied-link', function(element) {
+  $(element).fadeTo(0, 2);
+})
 
-		$(document).on('mouseout', '.transitied-link', function(element) {
-			  $(element).fadeTo(1, 2);
-		});
+$(document).on('mouseout', '.transitied-link', function(element) {
+  $(element).fadeTo(1, 2);
+});
 							</code>
 							<code>
 		.transitied-link {
@@ -135,7 +168,6 @@
 		}
 							</code>
 						</pre>
-						<p>Note how this lets us keep your styles inside the CSS file.</p>
 					</section>
 					<section>
 						<h1>Limitations</h1>
@@ -179,6 +211,67 @@
 					<section>
 						<h1>The Name Property</h1>
 						<p>The name property is a animation definition that consists of a listing of different keyframes</p>
+					</section>
+					<section>
+						<h1>Keyframes Syntax</h1>
+						<pre>
+							<code>
+                @keyframes (name) {
+                   from { /* Insert from Styles here */}
+                   to { /* Insert two Styles here */}
+                }
+
+                @keyframes (name) {
+                   10% { /* Insert Styles here */ }
+                   30% { /* Insert Styles here */ }
+                   60% { /* Insert Styles here */ }
+                   65% { /* Insert Styles here */ }
+                   85% { /* Insert Styles here */ }
+                  100% { /* Insert Styles here */ }
+                }
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h1>The full Example</h1>
+						<pre>
+							<code>
+     .animate-paragraph {
+	background-color: #222222;
+	color: #fff;
+	position: absolute;
+	left: 25px;
+	top: 25px;
+	animation: movearound 5s infinite;
+     }
+
+    @keyframes movearound {
+      10% {
+        left: 60px;
+      }
+
+      30% {
+        left: 100px;
+      }
+
+      50% {
+        opacity: 0;
+      }
+
+      70% {
+        top: 100%;
+      }
+
+      100% {
+        top: 25px;
+        left: 25px;
+      }
+    }
+					  	</code>
+						</pre>
+					</section>
+					<section>
+						<p class="animate-paragraph">The Result</p>
 					</section>
 				</section>
 			</div>
